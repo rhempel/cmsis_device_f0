@@ -24,15 +24,13 @@ $(MODULE)_PATH := $(MODULE_PATH)
 SRC_C :=  
 SRC_ASM :=  
 
-SRC_C += main.c
 SRC_C += Source/Templates/system_$(MCU_FAMILY).c
 
-$(MODULE)_startup_VARIANT :=  $(shell echo $(MCU_VARIANT) | tr '[:upper:]' '[:lower:]')
+$(MODULE)_startup_VARIANT := $(shell echo $(MCU_VARIANT) | tr '[:upper:]' '[:lower:]')
 
 SRC_ASM += Source/Templates/gcc/startup_$($(MODULE)_startup_VARIANT).s
 
 SYSTEM_STARTUP_OBJ := $(ROOT_PATH)/$(BUILD_PATH)/$(MODULE_PATH)/Source/Templates/gcc/startup_$($(MODULE)_startup_VARIANT).o
-SYSTEM_MAIN_OBJ := $(ROOT_PATH)/$(BUILD_PATH)/$(MODULE_PATH)/main.o
 
 # ----------------------------------------------------------------------------
 # Set up the module level source and include paths
@@ -43,6 +41,7 @@ $(MODULE)_SRCPATH += $(MODULE_PATH)/Source/Templates/gcc/
 $(MODULE)_INCPATH :=
 $(MODULE)_INCPATH += $(MODULE_PATH)/Include
 $(MODULE)_INCPATH += $(cmsis_core_PATH)/Include
+$(MODULE)_INCPATH += $(LIBC_INCPATH)
 
 # ----------------------------------------------------------------------------
 # Set any module level compile time defaults here
