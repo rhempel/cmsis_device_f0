@@ -41,7 +41,6 @@ $(MODULE)_SRCPATH += $(MODULE_PATH)/Source/Templates/gcc/
 $(MODULE)_INCPATH :=
 $(MODULE)_INCPATH += $(MODULE_PATH)/Include
 $(MODULE)_INCPATH += $(cmsis_core_PATH)/Include
-$(MODULE)_INCPATH += $(LIBC_INCPATH)
 
 # ----------------------------------------------------------------------------
 # Set any module level compile time defaults here
